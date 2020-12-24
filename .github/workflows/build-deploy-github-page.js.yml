@@ -27,7 +27,9 @@ jobs:
         sudo apt-key add winehq.key
         sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
         sudo apt update
-        sudo apt install wine-stable-i386
+        sudo apt install --install-recommends libgphoto2-6:i386
+        sudo apt update
+        sudo apt install --install-recommends wine-stable-i386
         sudo apt update
         sudo apt install --install-recommends wine-stable
         sudo apt update
