@@ -9,7 +9,7 @@
     "start": "parcel serve index.html",
     "build": "rm -rf ./build && parcel build index.html -d build/ --public-url ./",
     "build:electron": "rm -rf ./build && parcel build index-electron.html -d build/ --public-url ./",
-    "dist": "rm -rf ./dist && yarn electron-builder"
+    "dist": "rm -rf ./dist && yarn electron-builder --win --publish never"
   },
   "build": {
     "appId": "com.electron.phaser-test",
