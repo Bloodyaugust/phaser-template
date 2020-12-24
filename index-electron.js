@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 
 function createWindow () {
   const win = new BrowserWindow({
@@ -9,7 +9,10 @@ function createWindow () {
     }
   })
 
-  win.loadFile('./index-electron.html')
+  win.setContentSize(800, 600)
+  Menu.setApplicationMenu(false)
+
+  win.loadFile('./build/index-electron.html')
 }
 
 app.whenReady().then(createWindow)

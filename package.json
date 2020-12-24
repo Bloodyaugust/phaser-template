@@ -2,18 +2,31 @@
   "name": "phaser-test",
   "version": "1.0.0",
   "description": "Testing the Phaser game engine",
-  "main": "index.js",
+  "main": "index-electron.js",
   "author": "Bloodyaugust <greysonrichey@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "parcel serve index.html",
-    "build": "parcel build index.html --public-url ./",
-    "build:electron": "rm -r ./dist/ && parcel build index-electron.html --public-url ./"
+    "build": "rm -rf ./build && parcel build index.html -d build/ --public-url ./",
+    "build:electron": "rm -rf ./build && parcel build index-electron.html -d build/ --public-url ./",
+    "dist": "rm -rf ./dist && yarn electron-builder"
+  },
+  "build": {
+    "appId": "com.electron.phaser-test",
+    "files": [
+      "index-electron.js",
+      "build/*"
+    ],
+    "win": {
+      "asarUnpack": ["build/index-electron.html"],
+      "target": "portable"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/preset-react": "^7.12.10",
     "electron": "^11.1.1",
+    "electron-builder": "^22.9.1",
     "eslint": "^7.16.0",
     "parcel": "^1.12.4"
   },

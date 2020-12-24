@@ -20,7 +20,7 @@ jobs:
       uses: CultureHQ/actions-yarn@master
       with:
         args: install
-    - name: Build
+    - name: Build Web
       uses: CultureHQ/actions-yarn@master
       with:
         args: build
@@ -29,5 +29,39 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: dist # The folder the action should deploy.
+        FOLDER: build # The folder the action should deploy.
         CLEAN: true # Automatically remove deleted files from the deploy branch
+    - name: Build Electron Source
+      uses: CultureHQ/actions-yarn@master
+      with:
+        args: build:electron
+    - name: Build Electron Distributables
+      uses: CultureHQ/actions-yarn@master
+      with:
+        args: dist
+    - name: Zip Electron Distributables
+      uses: montudor/action-zip@v0.1.1
+      with:
+        args: zip -qq -r phaser-test.zip dist
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: |
+          A new release!
+        draft: false
+        prerelease: false
+    - name: Upload Electron Distributables to Github Release
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./phaser-test.zip
+        asset_name: phaser-test.zip
+        asset_content_type: application/zip
