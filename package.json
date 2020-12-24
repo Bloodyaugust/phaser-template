@@ -7,11 +7,13 @@
   "license": "MIT",
   "scripts": {
     "start": "parcel serve index.html",
-    "build": "parcel build index.html --public-url ./"
+    "build": "parcel build index.html --public-url ./",
+    "build:electron": "rm -r ./dist/ && parcel build index-electron.html --public-url ./"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/preset-react": "^7.12.10",
+    "electron": "^11.1.1",
     "eslint": "^7.16.0",
     "parcel": "^1.12.4"
   },
