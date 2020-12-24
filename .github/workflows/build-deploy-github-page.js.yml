@@ -34,6 +34,7 @@ jobs:
         sudo apt install --install-recommends wine-stable
         sudo apt update
         sudo apt install --install-recommends winehq-stable
+        wine --version
     - name: Build Web
       uses: CultureHQ/actions-yarn@master
       with:
