@@ -1,0 +1,15 @@
+button {
+  font-size: x-large;
+  margin: 1rem;
+  width: 10rem;
+}
+
+.container {
+  align-items: center;
+  /* background-color: grey; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,55 @@
+.container {
+  color: aliceblue;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+.container > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.enter {
+  top: 0px;
+  transition: top 1000ms;
+}
+
+.exit {
+  top: 600px;
+  transition: top 1000ms;
+}
+
+.active {
+  top: 0px;
+  transition: top 1000ms;
+}
+
+.inactive {
+  top: 600px;
+  transition: top 1000ms;
+}
+
+.hud.enter {
+  opacity: 1;
+  top: 0px;
+  transition: opacity 1000ms;
+}
+
+.hud.exit {
+  opacity: 0;
+  top: 0px;
+  transition: opacity 1000ms;
+}
+
+.hud.active {
+  opacity: 1;
+  top: 0px;
+  transition: opacity 1000ms;
+}
+
+.hud.inactive {
+  opacity: 0;
+  top: 0px;
+  transition: opacity 1000ms;
+}

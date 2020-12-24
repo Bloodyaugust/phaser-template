@@ -1,0 +1,27 @@
+{
+  "name": "phaser-test",
+  "version": "1.0.0",
+  "description": "Testing the Phaser game engine",
+  "main": "index.js",
+  "author": "Bloodyaugust <greysonrichey@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel serve index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/preset-react": "^7.12.10",
+    "eslint": "^7.16.0",
+    "parcel": "^1.12.4"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.12.11",
+    "core-js": "^3.8.1",
+    "phaser": "^3.50.0",
+    "postcss-modules": "^3.2.2",
+    "react": ">=16.6.0",
+    "react-dom": ">=16.6.0",
+    "react-transition-group": "^4.4.1"
+  }
+}

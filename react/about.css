@@ -1,0 +1,20 @@
+p {
+  text-align: center;
+  font-size: large;
+  margin: 1rem;
+  white-space: pre-wrap;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.container > section {
+  background-color: rgb(90, 90, 90);
+  border-radius: 4px;
+}
