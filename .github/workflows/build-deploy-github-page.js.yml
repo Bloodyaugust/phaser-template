@@ -20,6 +20,11 @@ jobs:
       uses: CultureHQ/actions-yarn@master
       with:
         args: install
+    - name: Install Wine
+      run: |
+        sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ groovy main'
+        sudo apt update
+        sudo apt install --install-recommends winehq-stable
     - name: Build Web
       uses: CultureHQ/actions-yarn@master
       with:
