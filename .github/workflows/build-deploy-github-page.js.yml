@@ -20,20 +20,21 @@ jobs:
       uses: CultureHQ/actions-yarn@master
       with:
         args: install
-    - name: Install Wine
-      run: |
-        sudo dpkg --add-architecture i386 
-        wget -nc https://dl.winehq.org/wine-builds/winehq.key
-        sudo apt-key add winehq.key
-        sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
-        sudo apt update
-        sudo apt install --install-recommends libgphoto2-6:i386
-        sudo apt update
-        sudo apt install --install-recommends wine-stable-i386
-        sudo apt update
-        sudo apt install --install-recommends wine-stable
-        sudo apt update
-        sudo apt install --install-recommends winehq-stable
+    # - name: Install Wine
+    #   run: |
+    #     sudo dpkg --add-architecture i386 
+    #     wget -nc https://dl.winehq.org/wine-builds/winehq.key
+    #     sudo apt-key add winehq.key
+    #     sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
+    #     sudo apt update
+    #     sudo apt install --install-recommends libgphoto2-6:i386
+    #     sudo apt update
+    #     sudo apt install --install-recommends wine-stable-i386
+    #     sudo apt update
+    #     sudo apt install --install-recommends wine-stable
+    #     sudo apt update
+    #     sudo apt install --install-recommends winehq-stable
+    #     wine --version
     - name: Build Web
       uses: CultureHQ/actions-yarn@master
       with:
@@ -45,37 +46,37 @@ jobs:
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: build # The folder the action should deploy.
         CLEAN: true # Automatically remove deleted files from the deploy branch
-    - name: Build Electron Source
-      uses: CultureHQ/actions-yarn@master
-      with:
-        args: build:electron
-    - name: Build Electron Distributables
-      uses: CultureHQ/actions-yarn@master
-      with:
-        args: dist
-    - name: Zip Electron Distributables
-      uses: montudor/action-zip@v0.1.1
-      with:
-        args: zip -qq -r phaser-test.zip dist
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: |
-          A new release!
-        draft: false
-        prerelease: false
-    - name: Upload Electron Distributables to Github Release
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./phaser-test.zip
-        asset_name: phaser-test.zip
-        asset_content_type: application/zip
+    # - name: Build Electron Source
+    #   uses: CultureHQ/actions-yarn@master
+    #   with:
+    #     args: build:electron
+    # - name: Build Electron Distributables
+    #   uses: CultureHQ/actions-yarn@master
+    #   with:
+    #     args: dist
+    # - name: Zip Electron Distributables
+    #   uses: montudor/action-zip@v0.1.1
+    #   with:
+    #     args: zip -qq -r phaser-test.zip dist
+    # - name: Create Release
+    #   id: create_release
+    #   uses: actions/create-release@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+    #   with:
+    #     tag_name: ${{ github.ref }}
+    #     release_name: Release ${{ github.ref }}
+    #     body: |
+    #       A new release!
+    #     draft: false
+    #     prerelease: false
+    # - name: Upload Electron Distributables to Github Release
+    #   id: upload-release-asset 
+    #   uses: actions/upload-release-asset@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+    #     asset_path: ./phaser-test.zip
+    #     asset_name: phaser-test.zip
+    #     asset_content_type: application/zip
