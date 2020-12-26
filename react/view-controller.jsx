@@ -3,6 +3,7 @@ import { GameContext } from './game-interop'
 import About from './about'
 import HUD from './hud'
 import MainMenu from './main-menu'
+import Settings from './settings'
 import { GameState } from '../constants/game-state'
 import styles from './view-controller.css'
 
@@ -52,6 +53,9 @@ export default function ViewController(props) {
       </div>
       <div className={getAnimationClassName(GameState.VIEW_ABOUT)}>
         <About animating={animating} />
+      </div>
+      <div className={getAnimationClassName(GameState.VIEW_SETTINGS)}>
+        <Settings animating={animating} />
       </div>
     </div>
   )

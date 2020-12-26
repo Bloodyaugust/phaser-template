@@ -7,6 +7,10 @@ export default function GameInterop(props) {
     delta: 0,
     score: 0
   })
+  const [registryState, setRegistryState] = useState({
+    sfxVolume: 1,
+    musicVolume: 1
+  })
   const [game, setGame] = useState()
   const [mainScene, setMainScene] = useState()
 
@@ -14,6 +18,7 @@ export default function GameInterop(props) {
     window.addEventListener('gameMounted', onGameMounted)
     window.addEventListener('gameStateChanged', onGameStateChanged)
     window.addEventListener('mainSceneCreated', onMainSceneCreated)
+    window.addEventListener('registryStateChanged', onRegistryStateChanged)
     
 
     return () => {
@@ -25,10 +30,26 @@ export default function GameInterop(props) {
 
   const onGameMounted = (event) => {
     setGame(() => event.detail.game)
+
+    setGameState((state) => {
+      return {
+        ...state,
+        ...event.detail.game.registry.values
+      }
+    })
   }
 
   const onGameStateChanged = (event) => {
     setGameState((state) => {
+      return {
+        ...state,
+        ...event.detail
+      }
+    })
+  }
+
+  const onRegistryStateChanged = (event) => {
+    setRegistryState((state) => {
       return {
         ...state,
         ...event.detail
@@ -44,7 +65,8 @@ export default function GameInterop(props) {
     <GameContext.Provider value={{
       game,
       gameState,
-      mainScene
+      mainScene,
+      registryState
     }}>
       {props.children}
     </GameContext.Provider>

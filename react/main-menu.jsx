@@ -16,6 +16,7 @@ export default function MainMenu(props) {
       <h1>Phaser Test</h1>
       <button disabled={props.animating} onClick={onPlayButtonClicked}>Play</button>
       <button disabled={props.animating} onClick={() => { mainScene.data.set('view', GameState.VIEW_ABOUT) }}>About</button>
+      <button disabled={props.animating} onClick={() => { mainScene.data.set('view', GameState.VIEW_SETTINGS) }}>Settings</button>
     </div>
   )
 }

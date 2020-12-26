@@ -40,7 +40,7 @@ export class Enemy extends GameObjects.Sprite {
       this.scene.data.inc('score', 1)
       this.scene.sound.play('explosion', {
         detune: Math.FloatBetween(0, 1000),
-        volume: 0.35
+        volume: 0.35 * game.registry.get('sfxVolume')
       })
       const hitParticles = this.scene.add.particles(Object.keys(particles)[Math.Between(0, Object.keys(particles).length - 1)]).createEmitter({
         x: this.x,

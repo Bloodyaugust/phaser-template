@@ -25,7 +25,7 @@ export class Player extends GameObjects.Sprite {
       this.scene.data.set('view', GameState.VIEW_MAIN_MENU)
       this.scene.sound.play('lose', {
         detune: Math.random() * 200,
-        volume: 0.75
+        volume: 0.75 * game.registry.get('sfxVolume')
       })
     }
   }
@@ -49,7 +49,7 @@ export class Player extends GameObjects.Sprite {
       new PlayerBullet(this.scene, this.x, this.y)
       this.scene.sound.play('laser', {
         detune: Math.random() * 500,
-        volume: 0.75
+        volume: 0.75 * game.registry.get('sfxVolume')
       })
     }
   }

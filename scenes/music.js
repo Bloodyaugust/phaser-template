@@ -1,6 +1,8 @@
 import { Scene } from 'phaser'
 import music from '../res/music/*.mp3'
 
+const musicVolumeDefault = 0.25
+
 export class MusicScene extends Scene {
   constructor() {
     super({
@@ -15,8 +17,16 @@ export class MusicScene extends Scene {
   create() {
     this.music = this.sound.add('after-dark', {
       loop: true,
-      volume: 0.25
+      volume: musicVolumeDefault * game.registry.get('musicVolume')
     })
     this.music.play()
+
+    game.registry.events.on('changedata', (parent, key, value, previousValue) => {
+      switch (key) {
+        case 'musicVolume':
+          this.music.setVolume(musicVolumeDefault * value)
+          break
+      }
+    }, this)
   }
 }
