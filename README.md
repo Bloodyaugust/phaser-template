@@ -45,29 +45,29 @@ The "no config" nature of Parcel is really attractive, and _almost_ true. Some c
 Github has free in-house solutions for CI/CD and hosting, with Workflows and Pages. This means we don't need another external service to watch our code for changes, run our tests, build the production bundle, and publish it to a server. You need to configure Pages per repository, but your workflow will run as soon as you clone and push this repository, if you leave the `.github` folder intact.
 
 ### Folders
-- (actors)[actors/]:
+- [actors](actors/):
 Generally, these are classes that extend `Phaser` namespace classes (aside from `Scene`s). If it collects attributes, is displayed, and can be interacted with by the user (directly or no), it probably goes here.
 
-- (behaviors)[behaviors/]:
+- [behaviors](behaviors/):
 Simple scripts as class objects that can be used to impart behavior to actors. Usually this is behavior that can be shared across actors, needs minimal state of its own, and is okay to be instantiated/destroyed whenever. These are similar to `Phaser` mixins.
 
-- (constants)[constants/]:
+- [constants](constants/):
 A handy place to define global, constant data, such as state keys or game configurations that never change.
 
-- (controllers)[controllers/]:
+- [controllers](controllers/):
 Scripts that need to run in a `Scene`, but have no visual representation, or are not directly interacted with by the user. Useful for containing meta game state, orchestrating interactions between the UI and the game, handling groups of actors, etc.
 
-- (data)[data/]:
+- [data](data/):
 This is where you should store your CastleDB file(s). Any other JSON data should go here as well (aside from things like animations).
 
-- (react)[react/]:
+- [react](react/):
 Here is where the React app source lives. JSX, CSS, whatever UI you're going to use in React land.
 
-- (res)[res/]:
+- [res](res/):
 Images, sfx, music, and any other binary assets for your game should live here, or in a subdirectory here. You could also store some of these directly next to actors, if it floats your boat, but glob imports can do some really handy things if you keep them together here.
 
-- (scenes)[scenes/]:
+- [scenes](scenes/):
 This is for your `Phaser.Scene` extending classes! `main.js` Has a few handy patterns already.
 
-- (root)[root/]:
+- [root](root/):
 Overall project configuration, the index pages, editor configs, etc. should all live in the root.
