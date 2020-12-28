@@ -18,7 +18,9 @@
       "build/*"
     ],
     "win": {
-      "asarUnpack": ["build/index-electron.html"],
+      "asarUnpack": [
+        "build/index-electron.html"
+      ],
       "target": "portable"
     }
   },
@@ -32,6 +34,7 @@
   },
   "dependencies": {
     "@babel/preset-env": "^7.12.11",
+    "chance": "^1.1.7",
     "core-js": "^3.8.1",
     "phaser": "^3.50.0",
     "postcss-modules": "^3.2.2",

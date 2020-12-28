@@ -1,13 +1,15 @@
 import { Scene } from 'phaser'
 import { Player } from '../actors/player'
+import { DataController } from '../controllers/data-controller'
 import { DoodadSpawnerController } from '../controllers/doodad-spawner'
 import { EnemySpawnerController } from '../controllers/enemy-spawner'
 import backgrounds from '../res/backgrounds/*.png'
 import doodads from '../res/sprites/doodads/*.png'
 import particles from '../res/sprites/particles/*.png'
 import sprites from '../res/sprites/*.png'
+import enemySprites from '../res/sprites/enemies/*.png'
+import enemyAnimations from '../res/sprites/enemies/*.json'
 import sfx from '../res/sfx/*.ogg'
-import animations from '../res/sprites/*.json'
 import { GameState } from '../constants/game-state'
 
 export class MainScene extends Scene {
@@ -21,7 +23,6 @@ export class MainScene extends Scene {
   }
 
   preload() {
-    this.load.aseprite('enemy', sprites.enemy, animations.enemy)
     this.load.image('player', sprites.player)
     this.load.image('player-bullet', sprites['player-bullet'])
     this.load.image('spark', sprites.spark)
@@ -33,6 +34,13 @@ export class MainScene extends Scene {
     Object.keys(particles).forEach((particleKey) => {
       this.load.image(particleKey, particles[particleKey])
     })
+    Object.keys(enemySprites).forEach((enemySpriteKey) => {
+      if (enemyAnimations[enemySpriteKey]) {
+        this.load.aseprite(enemySpriteKey, enemySprites[enemySpriteKey], enemyAnimations[enemySpriteKey])
+      } else {
+        this.load.image(enemySpriteKey, enemySprites[enemySpriteKey])
+      }
+    })
 
     this.load.audio('explosion', sfx.explosion)
     this.load.audio('laser', sfx.laser)
@@ -40,7 +48,9 @@ export class MainScene extends Scene {
   }
   
   create() {
-    this.anims.createFromAseprite('enemy')
+    Object.keys(enemyAnimations).forEach((enemyAnimationKey) => {
+      this.anims.createFromAseprite(enemyAnimationKey)
+    })
 
     this.groups = {
       bullets: this.physics.add.group({name: 'bullets'}),
@@ -49,7 +59,9 @@ export class MainScene extends Scene {
       player: this.physics.add.group({name: 'player'})
     }
 
+    this.dataController = new DataController(this)
     this.controllers = [
+      this.dataController,
       new EnemySpawnerController(this),
       new DoodadSpawnerController(this)
     ]

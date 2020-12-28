@@ -1,0 +1,121 @@
+{
+	"sheets": [
+		{
+			"name": "enemies",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "name"
+				},
+				{
+					"typeStr": "3",
+					"name": "health",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "behaviors"
+				},
+				{
+					"typeStr": "3",
+					"name": "score",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"name": "basic",
+					"health": 1,
+					"behaviors": [],
+					"score": 1
+				},
+				{
+					"name": "buff",
+					"health": 2,
+					"behaviors": [
+						{
+							"behavior": "dodge",
+							"data": {
+								"speed": 150
+							}
+						}
+					],
+					"score": 3
+				},
+				{
+					"name": "shooter",
+					"health": 1,
+					"behaviors": [
+						{
+							"behavior": "fire"
+						}
+					],
+					"score": 3
+				},
+				{
+					"name": "boss",
+					"health": 5,
+					"behaviors": [
+						{
+							"behavior": "dodge"
+						},
+						{
+							"behavior": "fire"
+						},
+						{
+							"behavior": "boss"
+						}
+					],
+					"score": 15
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "enemies@behaviors",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "6:behaviors",
+					"name": "behavior",
+					"display": null
+				},
+				{
+					"typeStr": "16",
+					"name": "data",
+					"opt": true
+				}
+			]
+		},
+		{
+			"name": "behaviors",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "name",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"name": "dodge"
+				},
+				{
+					"name": "fire"
+				},
+				{
+					"name": "boss"
+				}
+			],
+			"separators": [],
+			"props": {}
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}
