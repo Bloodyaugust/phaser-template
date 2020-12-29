@@ -1,5 +1,5 @@
 # phaser-template
-Testing the Phaser game engine with ES6, React, Parcel, Github Actions, Electron, and CastleDB.
+This project serves as a template and explainer for using PhaserV3 with ES6 syntax, React for UI, CastleDB for data, and Parcel for local development and builds, with continuous integration for Github Pages through Github Actions.
 
 The "game" can be played at https://bloodyaugust.github.io/phaser-template/
 
@@ -17,8 +17,6 @@ then
 Changes on `master` will trigger a build and push to the `gh-pages` branch.
 
 ## About
-This project serves as a template and explainer for using PhaserV3 with ES6 syntax, React for UI, CastleDB for data, and Parcel for local development and builds, with continuous integration for Github Pages through Github Actions.
-
 ### ES6
 By using ES6 imports/modules/syntax, we can keep the codebase clean and organized. Features like class-based OOP, lambda functions, keywords like `async/await`, `const`, and syntactic sugar like `...`(spread operator) make code much more fun to write, and easier to maintain/read.
 
