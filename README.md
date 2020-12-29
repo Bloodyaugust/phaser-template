@@ -1,7 +1,7 @@
-# phaser-test
+# phaser-template
 Testing the Phaser game engine with ES6, React, Parcel, Github Actions, Electron, and CastleDB.
 
-The "game" can be played at https://bloodyaugust.github.io/phaser-test/
+The "game" can be played at https://bloodyaugust.github.io/phaser-template/
 
 ## Developing
 `yarn install`
