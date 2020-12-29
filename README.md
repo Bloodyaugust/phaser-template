@@ -1,5 +1,5 @@
 # phaser-test
-Testing the Phaser game engine with ES6, React, Parcel, Github Workflows, Electron, and CastleDB.
+Testing the Phaser game engine with ES6, React, Parcel, Github Actions, Electron, and CastleDB.
 
 The "game" can be played at https://bloodyaugust.github.io/phaser-test/
 
@@ -13,11 +13,11 @@ then
 ## Build
 `yarn build`
 
-## Github Workflow
+## Github Action
 Changes on `master` will trigger a build and push to the `gh-pages` branch.
 
 ## About
-This project serves as a template and explainer for using PhaserV3 with ES6 syntax, React for UI, CastleDB for data, and Parcel for local development and builds, with continuous integration for Github Pages through Github Workflows.
+This project serves as a template and explainer for using PhaserV3 with ES6 syntax, React for UI, CastleDB for data, and Parcel for local development and builds, with continuous integration for Github Pages through Github Actions.
 
 ### ES6
 By using ES6 imports/modules/syntax, we can keep the codebase clean and organized. Features like class-based OOP, lambda functions, keywords like `async/await`, `const`, and syntactic sugar like `...`(spread operator) make code much more fun to write, and easier to maintain/read.
@@ -43,8 +43,8 @@ The "no config" nature of Parcel is really attractive, and _almost_ true. Some c
 ### CastleDB
 [CastleDB](http://castledb.org/) is a flat-file "database" builder that exports JSON files. It is a lightweight, easy to use tool for organizing game data that in other engines might be managed through "ScriptableObjects" or "ResourceScripts" *ahem*. Because it uses JSON natively, integrating it with your use-case in JS is very straightforward to do. See [DataController](controllers/data-controller.js) for an example of how this can work.
 
-### Github Workflows and Pages
-Github has free in-house solutions for CI/CD and hosting, with Workflows and Pages. This means we don't need another external service to watch our code for changes, run our tests, build the production bundle, and publish it to a server. You need to configure Pages per repository, but your workflow will run as soon as you clone and push this repository, if you leave the `.github` folder intact.
+### Github Actions and Pages
+Github has free in-house solutions for CI/CD and hosting, with Actions and Pages. This means we don't need another external service to watch our code for changes, run our tests, build the production bundle, and publish it to a server. You need to configure Pages per repository, but your workflow will run as soon as you clone and push this repository, if you leave the `.github` folder intact.
 
 ### Folders
 - [actors](actors/):
